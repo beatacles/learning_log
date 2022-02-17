@@ -2,8 +2,8 @@ from pathlib import Path
 import os
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-nqe0qgz+4d)c231s*l0&uthfa=15j&wux7&i%l+8!-*zb+w44g'
@@ -11,14 +11,18 @@ SECRET_KEY = 'django-insecure-nqe0qgz+4d)c231s*l0&uthfa=15j&wux7&i%l+8!-*zb+w44g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+#Allow all hosts headers
+ALLOW_HOSTS = ['*']
 # Мои настройки
 LOGIN_URL = '/users/login/'
 
 # Настройки Heroku
-import django_heroku
-
-django_heroku.settings(locals())
+#Settings for Heroku
+if os.getcwd() =='/app':
+    import dj_database_url
+    DATABASES = {
+        'default':dj_database_url.config(default='postgres://localhost')
+        }
 
 # Application definition
 
@@ -70,7 +74,7 @@ WSGI_APPLICATION = 'learning_log.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -100,3 +104,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Configure static data
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+    )

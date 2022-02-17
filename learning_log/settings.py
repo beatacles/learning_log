@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -10,12 +11,11 @@ SECRET_KEY = 'django-insecure-nqe0qgz+4d)c231s*l0&uthfa=15j&wux7&i%l+8!-*zb+w44g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ALLOWED_HOSTS = []
+
 #Allow all hosts headers
-ALLOW_HOSTS = ALLOWED_HOSTS = [
-    '0.0.0.0'
-    'safe-earth-34957.herokuapp.com',
-    '127.0.0.1'
-]
+ALLOW_HOSTS = ['*']
+
 # Мои настройки
 LOGIN_URL = '/users/login/'
 
@@ -28,7 +28,6 @@ if os.getcwd() =='/app':
         }
 
 # Application definition
-
 INSTALLED_APPS = [
     # Мои приложения
     'learning_logs',

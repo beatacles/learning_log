@@ -12,9 +12,12 @@ SECRET_KEY = 'django-insecure-nqe0qgz+4d)c231s*l0&uthfa=15j&wux7&i%l+8!-*zb+w44g
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '0.0.0.0'
-    'safe-earth-34957.herokuapp.com',
-    '127.0.0.1'
+   '*',
+   'https://safe-earth-34957.herokuapp.com/',
+   'https://safe-earth-34957.herokuapp.com/',
+   'safe-earth-34957.herokuapp.com',
+   'the-yogify.herokuapp.com/',
+   '127.0.0.1',
 ]
 
 #Allow all hosts headers
